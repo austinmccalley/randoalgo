@@ -1,6 +1,6 @@
 # randoalgo
 
-> My striking Nuxt.js project
+> A website which randomly generates an algorithm for you to practice coding 
 
 ## Build Setup
 
