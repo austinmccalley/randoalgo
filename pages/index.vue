@@ -36,6 +36,19 @@ import Intro from '~/components/Intro.vue'
 import algosFile from '~/static/algos.json'
 
 export default {
+  head: {
+    titleTemplates: '%s - RandoAlgo',
+    meta: [{
+      charset: 'utf-8'
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    },
+    { hid: 'description', name: 'description', content: 'Meta description' }
+
+    ]
+  },
   components: {
     Logo,
     Intro,
@@ -46,6 +59,14 @@ export default {
       isHidden: false,
       algosName: '',
       algos: algosFile
+    }
+  },
+  mounted () {
+    if (process.browser) {
+      this.$gtag('config', 'UA-156469206-1', {
+        page_title: this.$meta.title,
+        page_path: this.$route.fullPath
+      })
     }
   },
   methods: {
@@ -65,6 +86,7 @@ export default {
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;

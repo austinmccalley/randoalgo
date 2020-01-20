@@ -52,7 +52,9 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // Doc: https://github.com/nuxt-community/google-gtag
+    '@nuxtjs/google-gtag'
   ],
   /*
    ** Build configuration
@@ -62,5 +64,17 @@ export default {
      ** You can extend webpack config here
      */
     extend (config, ctx) {}
+  },
+  'google-gtag': {
+    id: 'UA-156469206-1',
+    config: {
+      anonymize_ip: true, // anonymize IP
+      send_page_view: false, // might be necessary to avoid duplicated page track on page reload
+      linker: {
+        domains: ['randoalgo.com']
+      }
+    },
+    debug: true, // enable to track in dev mode
+    disableAutoPageTrack: false // disable if you don't want to track each page route with router.afterEach(...).
   }
 }
